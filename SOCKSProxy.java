@@ -1,4 +1,11 @@
-package tor.examples;
+/*************************************
+ * SOCKS Proxy in JAVA
+ * By Gareth Owen
+ * drgowen@gmail.com
+ * MIT Licence
+ ************************************/
+
+// NOTES : LISTENS ON PORT 8000
 
 import java.nio.ByteBuffer;
 import java.nio.channels.*;
@@ -8,10 +15,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Set;
 
-/**
- * SOCKS 4 proxy - Created by Gareth Owen (drgowen@gmail.com) on 27/06/14.
- */
-public class SOCKSProxyNonTor {
+public class SOCKSProxy {
 
     // socks client class - one per client connection
     class SocksClient {
@@ -117,7 +121,7 @@ public class SOCKSProxyNonTor {
         return cl;
     }
 
-    public SOCKSProxyNonTor() throws IOException {
+    public SOCKSProxy() throws IOException {
         ServerSocketChannel socks = ServerSocketChannel.open();
         socks.socket().bind(new InetSocketAddress(8000));
         socks.configureBlocking(false);
@@ -185,6 +189,6 @@ public class SOCKSProxyNonTor {
     }
 
     public static void main(String[] args) throws IOException {
-        new SOCKSProxyNonTor();
+        new SOCKSProxy();
     }
 }
